@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "python-app-template"
+version = "0.1.0"
+description = "FastAPI clean architecture template"
+authors = ["Maxim Vasilyev <mayxis@inbox.ru>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.12"
+uvicorn = "^0.34.2"
+loguru = "^0.7.3"
+pyyaml = "^6.0.2"
+pydantic = "^2.11.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
