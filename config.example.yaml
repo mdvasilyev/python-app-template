@@ -1,0 +1,24 @@
+app:
+  host: localhost
+  port: 8000
+  debug: 1
+  name: My FastAPI App
+
+db:
+  host: localhost
+  port: 5432
+  name: my_database
+  user: my_user
+  password: my_password
+
+auth:
+  secret_key: supersecretkey
+  algorithm: HS256
+  access_token_expire_minutes: 30
+
+logging:
+  level: DEBUG
+  log_file: logs/app.log
+  rotation: 10 MB
+  retention: 10 days
+  compression: zip
