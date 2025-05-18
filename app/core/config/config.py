@@ -18,6 +18,7 @@ class DBConfig(BaseModel):
     name: str
     user: str
     password: str
+    pool_size: int
 
 
 class AuthConfig(BaseModel):
