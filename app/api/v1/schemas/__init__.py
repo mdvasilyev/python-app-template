@@ -1,6 +1,6 @@
 """API schemas module."""
 
-from .user import User, UserPut, UserPatch, UserPost
+from .user import User, UserPatch, UserPost, UserPut
 
 __all__ = [
     "User",
