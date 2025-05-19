@@ -2,7 +2,8 @@ from contextlib import asynccontextmanager
 from typing import AsyncIterator
 
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncConnection, AsyncEngine, create_async_engine
+from sqlalchemy.ext.asyncio import (AsyncConnection, AsyncEngine,
+                                    create_async_engine)
 
 from app.core.config import DBConfig, GlobalConfig
 

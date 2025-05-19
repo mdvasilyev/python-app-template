@@ -5,7 +5,7 @@ from pydantic import EmailStr
 from sqlalchemy import Boolean, Column, DateTime, String
 from sqlalchemy.dialects.postgresql import UUID
 
-from app.infrastructure.database import PostgresBase
+from app.infrastructure.database.postgres import PostgresBase
 
 
 class UserORM(PostgresBase):
