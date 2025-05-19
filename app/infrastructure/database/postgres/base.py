@@ -10,5 +10,5 @@ convention = {
 }
 
 
-class Base(DeclarativeBase):
+class PostgresBase(DeclarativeBase):
     metadata = MetaData(naming_convention=convention)

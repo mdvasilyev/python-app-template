@@ -1,8 +1,9 @@
 """Database module."""
 
-from .base import Base
-
+from .postgres.base import PostgresBase
+from .postgres.connection_manager import PostgresConnectionManager
 
 __all__ = [
-    Base,
+    "PostgresBase",
+    "PostgresConnectionManager",
 ]
