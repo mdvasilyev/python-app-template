@@ -4,3 +4,4 @@ run:
 format:
 	isort .
 	ruff format .
+	black .
