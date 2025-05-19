@@ -13,23 +13,23 @@ class AppConfig(BaseModel):
 
 
 class DBConfig(BaseModel):
-    host: str
-    port: int
-    name: str
-    user: str
-    password: str
-    pool_size: int
+    host: str = "localhost"
+    port: int = 5432
+    name: str = "postgres"
+    user: str = "postgres"
+    password: str = "postgres"
+    pool_size: int = 15
 
 
 class AuthConfig(BaseModel):
     secret_key: str
     algorithm: Literal["HS256", "RS256"] = "HS256"
-    access_token_expire_minutes: int = Field(..., gt=0)
+    access_token_expire_minutes: int = Field(30, gt=0)
 
 
 class LoggingConfig(BaseModel):
     level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
-    log_file: str
+    log_file: str = "logs/app.log"
     rotation: str = "10 MB"
     retention: str = "10 days"
     compression: str = "zip"
