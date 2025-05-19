@@ -1,12 +1,10 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
 from alembic import context
+from sqlalchemy import engine_from_config, pool
 
-from app.infrastructure.database import Base
-from app.core.config import get_config, GlobalConfig
+from app.core.config import GlobalConfig, get_config
+from app.infrastructure.database import PostgresBase
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -15,9 +13,13 @@ config = context.config
 global_config: GlobalConfig = get_config()
 ini_section_config: str = config.config_ini_section
 config.set_section_option(ini_section_config, "POSTGRES_HOST", global_config.db.host)
-config.set_section_option(ini_section_config, "POSTGRES_PORT", str(global_config.db.port))
+config.set_section_option(
+    ini_section_config, "POSTGRES_PORT", str(global_config.db.port)
+)
 config.set_section_option(ini_section_config, "POSTGRES_USER", global_config.db.user)
-config.set_section_option(ini_section_config, "POSTGRES_PASSWORD", global_config.db.password)
+config.set_section_option(
+    ini_section_config, "POSTGRES_PASSWORD", global_config.db.password
+)
 config.set_section_option(ini_section_config, "POSTGRES_DB", global_config.db.name)
 
 # Interpret the config file for Python logging.
@@ -27,7 +29,7 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-target_metadata = Base.metadata
+target_metadata = PostgresBase.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -73,9 +75,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
