@@ -3,6 +3,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, EmailStr, Field
 
+from app.domain.user import UserCreate, UserPartialUpdate, UserUpdate
+
 
 class User(BaseModel):
     """User schema for GET request."""
@@ -37,6 +39,11 @@ class UserPost(BaseModel):
     name: str = Field(..., description="User's name", examples=["John Doe"])
     password: str = Field(..., description="User's password")
 
+    def to_domain(self) -> UserCreate:
+        """Transform API schema to domain entity."""
+
+        return UserCreate(**self.dict())
+
 
 class UserPut(BaseModel):
     """User schema for PUT request."""
@@ -47,6 +54,11 @@ class UserPut(BaseModel):
     name: str = Field(..., description="User's name", examples=["John Doe"])
     password: str = Field(..., description="User's password")
 
+    def to_domain(self) -> UserUpdate:
+        """Transform API schema to domain entity."""
+
+        return UserUpdate(**self.dict())
+
 
 class UserPatch(BaseModel):
     """User schema for PATCH request."""
@@ -56,3 +68,8 @@ class UserPatch(BaseModel):
     )
     name: str = Field(None, description="User's name", examples=["John Doe"])
     password: str = Field(None, description="User's password")
+
+    def to_domain(self) -> UserPartialUpdate:
+        """Transform API schema to domain entity."""
+
+        return UserPartialUpdate(**self.dict())

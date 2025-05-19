@@ -8,4 +8,5 @@ routes = [users_router]
 
 __all__ = [
     "routes",
+    "users_router",
 ]

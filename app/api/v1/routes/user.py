@@ -54,7 +54,7 @@ async def post_user(
 
     user_service: UserService = request.state.user_service
 
-    return await user_service.create_user(user)
+    return await user_service.create_user(user.to_domain())
 
 
 @router.put(
@@ -70,7 +70,7 @@ async def put_user(
 
     user_service: UserService = request.state.user_service
 
-    return await user_service.update_user(user)
+    return await user_service.update_user(user.to_domain())
 
 
 @router.patch(
@@ -86,7 +86,7 @@ async def patch_user(
 
     user_service: UserService = request.state.user_service
 
-    return await user_service.partially_update_user(user)
+    return await user_service.partially_update_user(user.to_domain())
 
 
 @router.delete(
