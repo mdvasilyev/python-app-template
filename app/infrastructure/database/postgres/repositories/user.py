@@ -2,8 +2,7 @@ from uuid import UUID
 
 from pydantic import EmailStr
 
-from app.domain.user.entities import (User, UserCreate, UserPartialUpdate,
-                                      UserUpdate)
+from app.domain.user.entities import User, UserCreate, UserPartialUpdate, UserUpdate
 from app.domain.user.interfaces import AbstractUserRepository
 from app.infrastructure.database.postgres import PostgresConnectionManager
 

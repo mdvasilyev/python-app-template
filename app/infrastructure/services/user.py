@@ -3,14 +3,16 @@ from uuid import UUID
 from pydantic import EmailStr
 
 from app.domain.user import User, UserCreate, UserPartialUpdate, UserUpdate
-from app.domain.user.usecases import (CreateUserUseCase, DeleteUserByIdUseCase,
-                                      GetUserByEmailUseCase,
-                                      GetUserByIdUseCase,
-                                      PartialUpdateUserUseCase,
-                                      UpdateUserUseCase)
+from app.domain.user.usecases import (
+    CreateUserUseCase,
+    DeleteUserByIdUseCase,
+    GetUserByEmailUseCase,
+    GetUserByIdUseCase,
+    PartialUpdateUserUseCase,
+    UpdateUserUseCase,
+)
 from app.infrastructure.database.postgres import PostgresConnectionManager
-from app.infrastructure.database.postgres.repositories import \
-    PostgresUserRepository
+from app.infrastructure.database.postgres.repositories import PostgresUserRepository
 
 
 class UserService:
